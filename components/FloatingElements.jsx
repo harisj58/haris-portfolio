@@ -1,32 +1,65 @@
-import React, { useEffect, useRef } from 'react';
+"use client"
+import React, { useEffect, useRef, useState } from 'react';
 
-
-const FloatingElements = () => {
+const FloatingElements = ({ count = 12 }) => {
     const containerRef = useRef(null);
     const elementsRef = useRef([]);
-    const mousePosition = useRef({ x: 0, y: 0 });
+    const mousePosition = useRef({ x: null, y: null });
     const animationFrameId = useRef();
+    const [elements, setElements] = useState([]);
+
+    const getRandomShape = () => {
+        const shapes = [
+            { shape: 'rounded-full', aspectRatio: '1' }, // circle
+            { shape: 'rounded-full', aspectRatio: '2.5' }, // pill
+        ];
+        return shapes[Math.floor(Math.random() * shapes.length)];
+    };
+
+    // Initialize a single element
+    const createElement = () => {
+        const baseSize = 20 + Math.random() * 100;
+        const shapeInfo = getRandomShape();
+        const width = baseSize;
+        const height = shapeInfo.aspectRatio === '1' ? baseSize : baseSize * 0.4;
+
+        return {
+            x: Math.random() * (window.innerWidth - width),
+            y: Math.random() * (window.innerHeight - height),
+            width,
+            height,
+            speed: 0.5 + Math.random() * 0.5,
+            rotation: Math.random() * 360,
+            directionX: Math.random() > 0.5 ? 1 : -1,
+            directionY: Math.random() > 0.5 ? 1 : -1,
+            shape: shapeInfo.shape,
+            aspectRatio: shapeInfo.aspectRatio,
+        };
+    };
+
+    // Initialize all elements
+    useEffect(() => {
+        const newElements = Array.from({ length: count }, () => createElement());
+        setElements(newElements);
+        elementsRef.current = newElements;
+    }, [count]);
 
     useEffect(() => {
         if (!containerRef.current) return;
 
-        // Initialize floating elements
-        elementsRef.current = Array.from({ length: 8 }, () => ({
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            size: 20 + Math.random() * 100,
-            speed: 0.5 + Math.random() * 0.5,
-            rotation: Math.random() * 360,
-        }));
-
         const handleMouseMove = (e) => {
-            const rect = containerRef.current?.getBoundingClientRect();
-            if (rect) {
-                mousePosition.current = {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
-                };
-            }
+            mousePosition.current = {
+                x: e.clientX,
+                y: e.clientY
+            };
+        };
+
+        const handleResize = () => {
+            elementsRef.current = elementsRef.current.map(element => ({
+                ...element,
+                x: Math.min(element.x, window.innerWidth - element.width),
+                y: Math.min(element.y, window.innerHeight - element.height),
+            }));
         };
 
         const animate = () => {
@@ -37,28 +70,43 @@ const FloatingElements = () => {
                 const el = elements[index];
                 if (!el) return;
 
-                // Calculate distance from mouse
-                const dx = mousePosition.current.x - element.x;
-                const dy = mousePosition.current.y - element.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                let dx = 0;
+                let dy = 0;
+                let distance = Infinity;
 
-                // Move away from mouse if close
-                if (distance < 200) {
-                    const angle = Math.atan2(dy, dx);
-                    element.x -= Math.cos(angle) * 2;
-                    element.y -= Math.sin(angle) * 2;
+                if (mousePosition.current.x !== null && mousePosition.current.y !== null) {
+                    dx = mousePosition.current.x - (element.x + element.width / 2);
+                    dy = mousePosition.current.y - (element.y + element.height / 2);
+                    distance = Math.sqrt(dx * dx + dy * dy);
                 }
 
-                // Add some natural floating movement
-                element.x += Math.sin(Date.now() * 0.001 * element.speed) * 0.5;
-                element.y += Math.cos(Date.now() * 0.001 * element.speed) * 0.5;
+                const repelDistance = 150;
+                const repelStrength = 2;
+
+                if (distance < repelDistance) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (repelDistance - distance) / repelDistance * repelStrength;
+                    element.x -= Math.cos(angle) * force;
+                    element.y -= Math.sin(angle) * force;
+                }
+
+                const nextX = element.x + element.directionX * Math.sin(Date.now() * 0.001 * element.speed) * 0.5;
+                const nextY = element.y + element.directionY * Math.cos(Date.now() * 0.001 * element.speed) * 0.5;
+
+                if (nextX >= 0 && nextX <= window.innerWidth - element.width) {
+                    element.x = nextX;
+                } else {
+                    element.directionX *= -1;
+                }
+
+                if (nextY >= 0 && nextY <= window.innerHeight - element.height) {
+                    element.y = nextY;
+                } else {
+                    element.directionY *= -1;
+                }
+
                 element.rotation += 0.1 * element.speed;
 
-                // Keep elements within bounds
-                element.x = Math.max(0, Math.min(element.x, window.innerWidth - element.size));
-                element.y = Math.max(0, Math.min(element.y, window.innerHeight - element.size));
-
-                // Apply transforms
                 el.style.transform = `translate(${element.x}px, ${element.y}px) rotate(${element.rotation}deg)`;
             });
 
@@ -66,27 +114,35 @@ const FloatingElements = () => {
         };
 
         window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('resize', handleResize);
         animate();
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('resize', handleResize);
             if (animationFrameId.current) {
                 cancelAnimationFrame(animationFrameId.current);
             }
         };
-    }, []);
+    }, [count]);
 
     return (
-        <div ref={containerRef} className="fixed inset-0 pointer-events-none overflow-hidden -z-0">
-            {Array.from({ length: 8 }).map((_, i) => (
+        <div
+            ref={containerRef}
+            className="fixed inset-0 pointer-events-none overflow-hidden -z-0"
+        >
+            {elements.map((element, i) => (
                 <div
                     key={i}
-                    className={`floating-element absolute backdrop-blur-lg bg-white/5 rounded-full transition-transform duration-300
-            ${i % 2 === 0 ? 'border border-white/10' : ''}
-          `}
+                    className={`floating-element absolute backdrop-blur-lg bg-white/5 
+                        ${element.shape}
+                        ${i % 2 === 0 ? 'border border-white/10' : ''}
+                    `}
                     style={{
-                        width: `${20 + Math.random() * 100}px`,
-                        height: `${20 + Math.random() * 100}px`,
+                        width: `${element.width}px`,
+                        height: `${element.height}px`,
+                        aspectRatio: element.aspectRatio,
+                        transform: `translate(${element.x}px, ${element.y}px)`,
                     }}
                 />
             ))}
