@@ -1,13 +1,17 @@
 "use client"
 
 import React from 'react';
-import { Github, Linkedin, Mail, Twitter, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter, ChevronDown, ArrowRight } from 'lucide-react';
 import TypewriterEffect from './TypewriterEffect';
 import FloatingElements from './FloatingElements';
 import './Hero.css';
+import Link from 'next/link';
+import ProjectCard from './ProjectCard';
+import { projects } from '../data/projects';
 
 function Hero() {
     const titles = ["Software Developer", "ML Engineer", "AI Enhanced Human"];
+    const featuredProjects = projects.filter(project => project.featured);
 
     const heroAbout = ["Building intelligent solutions through code. Specializing in machine learning and backend development.", "I flip transistors and live in O(n) time."]
 
@@ -80,31 +84,31 @@ function Hero() {
                 </div>
             </section >
 
-            {/* Projects Section */}
-            < section id="projects" className="about-section" >
+            {/* Featured Projects Section */}
+            <section id="projects" className="about-section">
                 <div className="about-container">
                     <div className="about-card">
                         <h2 className="about-title">
                             Featured Projects
                         </h2>
                         <div className="projects-grid">
-                            <div className="project-card">
-                                <h3 className="project-title">Project Name</h3>
-                                <p className="project-description">
-                                    Project description goes here. Explain what the project does and its impact.
-                                </p>
-                                <div className="tag-container">
-                                    <span className="tag">Tech Stack</span>
-                                </div>
-                                <a href="#" className="project-link">
-                                    View Project
-                                    <span>→</span>
-                                </a>
-                            </div>
+                            {featuredProjects.map((project) => (
+                                <ProjectCard
+                                    key={project.id}
+                                    project={project}
+                                />
+                            ))}
                         </div>
+                        <Link
+                            href="/projects"
+                            className="project-link"
+                            style={{ marginTop: '2rem' }}
+                        >
+                            View All Projects <ArrowRight size={16} />
+                        </Link>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Skills Section */}
             < section id="skills" className="about-section" >
