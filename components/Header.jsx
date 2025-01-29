@@ -1,21 +1,31 @@
+"use client"
 import "./Header.css";
 
 const Header = () => {
-  const navLinks = ["home", "expertise", "work", "experience", "contact"];
+
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   return (
-    <header className="header">
-      <h1>Haris Javed._</h1>
-      <div className="navContainer">
-        {navLinks.map((navLink, idx) => (
-          <div className="navLink" key={idx}>
-            <p className="navNumber">
-              {idx + 1 < 10 ? "0" + (idx + 1).toString() : idx + 1}
-            </p>
-            <p className="navText">{"// " + navLink}</p>
+    <nav className="nav">
+      <div className="nav-container">
+        <div className="nav-content">
+          <div onClick={() => scrollTo("hero")} className="nav-logo">Haris Javed._</div>
+          <div className="nav-links">
+            <a onClick={() => scrollTo(`about`)} className="nav-link">About</a>
+            <a onClick={() => scrollTo(`projects`)} className="nav-link">Projects</a>
+            <a onClick={() => scrollTo(`skills`)} className="nav-link" >Skills</a>
+            <button
+              onClick={() => scrollTo("contact")}
+              className="contact-button"
+            >
+              Get in Touch
+            </button>
           </div>
-        ))}
+        </div>
       </div>
-    </header>
+    </nav >
   );
 };
 

@@ -19,28 +19,8 @@ function Hero() {
         <div className="app-container">
             <FloatingElements />
 
-            {/* Navigation */}
-            <nav className="nav">
-                <div className="nav-container">
-                    <div className="nav-content">
-                        <div className="nav-logo">Haris Javed._</div>
-                        <div className="nav-links">
-                            <a onClick={() => scrollTo(`about`)} className="nav-link">About</a>
-                            <a onClick={() => scrollTo(`projects`)} className="nav-link">Projects</a>
-                            <a onClick={() => scrollTo(`skills`)} className="nav-link" >Skills</a>
-                            <button
-                                onClick={() => scrollTo("contact")}
-                                className="contact-button"
-                            >
-                                Get in Touch
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </nav >
-
             {/* Hero Section */}
-            < section className="section" >
+            < section id="hero" className="section" >
                 <div className="section-container">
                     <div className="hero-card">
                         <h1 className="hero-title">
