@@ -78,12 +78,51 @@ body {
     gap: 0.75rem;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
+    .all-projects {
+        padding: 1.5rem;
+    }
+
     .projects-grid {
-      grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
-    
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .projects-header {
+        margin-bottom: 2rem;
+    }
+
+    .projects-title {
+        font-size: 2rem;
+    }
+
+    .projects-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
     .about-card {
-      padding: 1.5rem;
+        padding: 1.5rem;
     }
-  }
+}
+
+@media (max-width: 480px) {
+    .projects-title {
+        font-size: 1.75rem;
+    }
+
+    .projects-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .all-projects {
+        padding: 1rem;
+    }
+}
