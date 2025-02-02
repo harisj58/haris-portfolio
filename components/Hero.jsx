@@ -5,6 +5,7 @@ import {
   Github,
   Linkedin,
   Mail,
+  Code,
   ChevronDown,
   ArrowRight,
   ExternalLink,
@@ -19,6 +20,8 @@ import { projects } from "../data/projects";
 function Hero() {
   const titles = ["Software Developer", "ML Engineer", "AI Enhanced Human"];
   const featuredProjects = projects.filter((project) => project.featured);
+
+  const currentYear = new Date().getFullYear();
 
   const heroAbout = [
     "Building intelligent solutions through code. Specializing in machine learning and backend development.",
@@ -209,6 +212,10 @@ function Hero() {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/in/me-haris-javed/",
                 },
+                {
+                  icon: Code,
+                  href: "https://leetcode.com/u/harisj58/",
+                },
                 // TODO: add proxy email
                 // { icon: Mail, href: "mailto:johndoe@gmail.com" },
               ].map(({ icon: Icon, href }, index) => (
@@ -217,6 +224,9 @@ function Hero() {
                 </a>
               ))}
             </div>
+            <p className="copyright-statement">
+              {`© Haris Javed ${currentYear}. All rights reserved.`}
+            </p>
           </div>
         </div>
       </section>
