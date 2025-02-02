@@ -1,0 +1,384 @@
+/* Global styles */
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #111827, #1F2937, #111827);
+  color: white;
+  position: relative;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+p {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* Hero Section */
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.section-container {
+  max-width: 56rem;
+  width: 100%;
+}
+
+.hero-card {
+  backdrop-filter: blur(16px);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  transition: transform 0.3s;
+}
+
+.hero-card:hover {
+  transform: scale(1.01);
+}
+
+.hero-title {
+  /* font-family: "Space Grotesk", serif; */
+  font-size: 3.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, white, #D1D5DB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  font-family: "Fira Code", monospace;
+  font-size: 1.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: #D1D5DB;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #10B981;
+  border-radius: 9999px;
+  transition: all 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #059669;
+  gap: 0.75rem;
+}
+
+.cta-button:hover .chevron-icon {
+  transform: translateY(0.25rem);
+}
+
+.chevron-icon {
+  transition: transform 0.3s;
+}
+
+/* About Section */
+.about-section {
+  min-height: 100vh;
+  padding: 5rem 1.5rem;
+}
+
+.about-container {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.about-card {
+  backdrop-filter: blur(16px);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.about-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, white, #D1D5DB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-text {
+  font-size: 1.125rem;
+  color: #D1D5DB;
+  margin-bottom: 1.5rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.skill-card {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.skill-card:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.skill-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #34D399;
+}
+
+.skill-list {
+  font-family: "Space Grotesk", sans-serif;
+  list-style-type: disc;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-list li {
+  margin-bottom: 0.75rem;
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.project-card {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.project-card:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: #D1D5DB;
+  margin-bottom: 1rem;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(52, 211, 153, 0.2);
+  color: #34D399;
+  font-size: 0.875rem;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.project-link {
+  color: #34D399;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.project-link:hover {
+  color: #6EE7B7;
+  gap: 0.75rem;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #34D399;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 5rem 1.5rem;
+}
+
+.contact-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-link {
+  padding: 0.75rem;
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.social-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.copyright-statement {
+  padding-top: 1.5rem;
+}
+
+/* Existing CSS remains the same, adding new mobile-specific styles */
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 0.5rem;
+  }
+
+  .section,
+  .about-section {
+    padding: 2rem 0.5rem;
+  }
+
+  .section-container,
+  .about-container,
+  .contact-container {
+    padding: 0 1rem;
+  }
+
+  .hero-card,
+  .about-card {
+    padding: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-text {
+    font-size: 1rem;
+  }
+
+  .about-grid,
+  .projects-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skill-card,
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .skill-title,
+  .project-title {
+    font-size: 1.25rem;
+  }
+
+  .cta-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .social-links {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .social-link {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Hidden navigation */
+  .nav-links {
+    display: none;
+  }
+}
+
+/* Ultra-small screens additional adjustments */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .section-container {
+    padding: 0 0.5rem;
+  }
+
+  .tag-container {
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+}

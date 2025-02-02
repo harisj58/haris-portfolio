@@ -1,0 +1,128 @@
+/* Reset default margins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, 
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.app-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #111827, #1F2937, #111827);
+    color: white;
+    position: relative;
+  }
+
+.all-projects {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .projects-header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .projects-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, white, #D1D5DB);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .projects-subtitle {
+    color: #D1D5DB;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .about-card {
+    backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #34D399;
+    margin-bottom: 2rem;
+    font-family: 'Fira Code', monospace;
+    transition: gap 0.3s ease;
+  }
+  
+  .back-link:hover {
+    gap: 0.75rem;
+  }
+  
+  @media (max-width: 1200px) {
+    .all-projects {
+        padding: 1.5rem;
+    }
+
+    .projects-grid {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .projects-header {
+        margin-bottom: 2rem;
+    }
+
+    .projects-title {
+        font-size: 2rem;
+    }
+
+    .projects-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .about-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-title {
+        font-size: 1.75rem;
+    }
+
+    .projects-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .all-projects {
+        padding: 1rem;
+    }
+}
