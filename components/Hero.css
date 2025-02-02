@@ -6,6 +6,17 @@
   position: relative;
 }
 
+h1,
+h2,
+h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+p {
+  font-family: "Space Grotesk", sans-serif;
+}
+
 /* Hero Section */
 .section {
   min-height: 100vh;
@@ -36,6 +47,7 @@
 }
 
 .hero-title {
+  /* font-family: "Space Grotesk", serif; */
   font-size: 3.75rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -46,6 +58,7 @@
 }
 
 .hero-subtitle {
+  font-family: "Fira Code", monospace;
   font-size: 1.875rem;
   margin-bottom: 1.5rem;
 }
@@ -139,10 +152,11 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: white;
+  color: #34D399;
 }
 
 .skill-list {
+  font-family: "Space Grotesk", sans-serif;
   list-style-type: disc;
   list-style-position: inside;
   margin: 0;
@@ -258,6 +272,10 @@
 .social-link:hover {
   background-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
+}
+
+.copyright-statement {
+  padding-top: 1.5rem;
 }
 
 /* Existing CSS remains the same, adding new mobile-specific styles */
