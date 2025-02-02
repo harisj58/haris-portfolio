@@ -1,4 +1,8 @@
 /* Navigation */
+body {
+  font-family: "Fira Code", monospace;
+}
+
 .nav {
   position: fixed;
   width: 100%;
