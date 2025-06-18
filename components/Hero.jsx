@@ -15,11 +15,14 @@ import FloatingElements from "./FloatingElements";
 import "./Hero.css";
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
+import ExperienceCard from "./ExperienceCard";
 import { projects } from "../data/projects";
+import { experiences } from "../data/experiences";
 
 function Hero() {
   const titles = ["Software Developer", "ML Engineer", "AI Enhanced Human"];
   const featuredProjects = projects.filter((project) => project.featured);
+  const featuredExperiences = experiences.filter((experience) => experience.featured);
 
   const currentYear = new Date().getFullYear();
 
@@ -106,6 +109,27 @@ function Hero() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Work Experience Section */}
+      <section id="experience" className="about-section">
+        <div className="about-container">
+          <div className="about-card">
+            <h2 className="about-title">Work Experience</h2>
+            <div className="projects-grid">
+              {featuredExperiences.map((experience) => (
+                <ExperienceCard key={experience.id} experience={experience} />
+              ))}
+            </div>
+            <Link
+              href="/experience"
+              className="project-link"
+              style={{ marginTop: "2rem" }}
+            >
+              View All Experience <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

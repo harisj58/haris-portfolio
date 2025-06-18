@@ -14,6 +14,7 @@ const Header = () => {
           <div onClick={() => scrollTo("hero")} className="nav-logo">Haris Javed._</div>
           <div className="nav-links">
             <a onClick={() => scrollTo(`about`)} className="nav-link">About</a>
+            <a onClick={() => scrollTo(`experience`)} className="nav-link">Experience</a>
             <a onClick={() => scrollTo(`projects`)} className="nav-link">Projects</a>
             <a onClick={() => scrollTo(`skills`)} className="nav-link" >Skills</a>
             <button
