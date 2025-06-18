@@ -44,15 +44,15 @@ body {
   .experiences-subtitle {
     color: #D1D5DB;
     font-size: 1.2rem;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
+    line-height: 1.6;
   }
   
-  .experiences-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  .experiences-by-company {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
-    padding: 1rem;
   }
   
   .about-card {
@@ -83,19 +83,12 @@ body {
         padding: 1.5rem;
     }
 
-    .experiences-grid {
+    .experiences-by-company {
         gap: 1.5rem;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 
 @media (max-width: 768px) {
-    .experiences-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-
     .experiences-header {
         margin-bottom: 2rem;
     }
@@ -111,6 +104,10 @@ body {
 
     .about-card {
         padding: 1.5rem;
+    }
+
+    .experiences-by-company {
+        gap: 1rem;
     }
 }
 

@@ -1,12 +1,14 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { experiences } from '@/data/experiences';
-import ExperienceCard from '@/components/ExperienceCard';
+import { experiencesByCompany } from '@/data/experiences';
+import CompanyExperienceCard from '@/components/CompanyExperienceCard';
 import FloatingElements from '@/components/FloatingElements';
 import './page.css';
 import Link from 'next/link';
 
 const AllExperiences = () => {
+    const companyGroups = Object.values(experiencesByCompany);
+
     return (
         <div className="app-container">
             <FloatingElements />
@@ -19,14 +21,15 @@ const AllExperiences = () => {
                     <div className="experiences-header">
                         <h1 className="experiences-title">Work Experience</h1>
                         <p className="experiences-subtitle">
-                            My professional journey in software development and machine learning
+                            My professional journey organized by company, showcasing career progression and diverse experiences
                         </p>
                     </div>
-                    <div className="experiences-grid">
-                        {experiences.map((experience) => (
-                            <ExperienceCard
-                                key={experience.id}
-                                experience={experience}
+                    
+                    <div className="experiences-by-company">
+                        {companyGroups.map((companyGroup, index) => (
+                            <CompanyExperienceCard
+                                key={companyGroup.company}
+                                companyGroup={companyGroup}
                             />
                         ))}
                     </div>
