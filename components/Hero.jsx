@@ -214,7 +214,7 @@ function Hero() {
                 },
                 {
                   icon: Code,
-                  href: "https://leetcode.com/u/harisj58/",
+                  href: "https://leetcode.com/u/haris-javed/",
                 },
                 // TODO: add proxy email
                 // { icon: Mail, href: "mailto:johndoe@gmail.com" },
