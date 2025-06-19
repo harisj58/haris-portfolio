@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowLeft, MapPin, Calendar, Briefcase, ExternalLink } from "lucide-react";
-import { experiences } from "../../../data/experiences";
+import { experiences } from "../../../data/experience";
 import FloatingElements from "../../../components/FloatingElements";
 import "./page.css";
 import Link from "next/link";
