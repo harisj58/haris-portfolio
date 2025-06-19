@@ -12,6 +12,11 @@ import {
 } from "lucide-react";
 import TypewriterEffect from "./TypewriterEffect";
 import FloatingElements from "./FloatingElements";
+import {
+  getDurationFromString,
+  formatDuration,
+  getTotalCompanyDuration,
+} from "../utils/dateUtils";
 import "./Hero.css";
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
@@ -138,76 +143,107 @@ function Hero() {
           <div className="about-card">
             <h2 className="about-title">Work Experience</h2>
             <div className="company-experiences-container">
-              {getFeaturedCompanyGroups().map((companyGroup, index) => (
-                <div
-                  key={companyGroup.company}
-                  className="company-experience-mini"
-                >
-                  <div className="company-header-mini">
-                    <img
-                      src={companyGroup.companyLogo}
-                      alt={`${companyGroup.company} logo`}
-                      className="company-logo-mini"
-                    />
-                    <div className="company-info-mini">
-                      <h3 className="company-name-mini">
-                        {companyGroup.company}
-                      </h3>
-                      <div className="company-roles-count-mini">
-                        {companyGroup.experiences.length}{" "}
-                        {companyGroup.experiences.length === 1
-                          ? "Role"
-                          : "Roles"}
-                      </div>
-                    </div>
-                  </div>
+              {getFeaturedCompanyGroups().map((companyGroup, index) => {
+                // Calculate total time at company for featured roles
+                const totalDuration = getTotalCompanyDuration(
+                  companyGroup.experiences
+                );
+                const totalDurationText = totalDuration
+                  ? formatDuration(totalDuration)
+                  : "";
 
-                  <div className="roles-list-mini">
-                    {companyGroup.experiences.map((experience) => (
-                      <div key={experience.id} className="role-item-mini">
-                        <div className="role-header-mini">
-                          <h4 className="role-title-mini">
-                            {experience.title}
-                          </h4>
-                          <span className="role-duration-mini">
-                            {experience.duration}
-                          </span>
-                        </div>
-                        <p className="role-description-mini">
-                          {experience.shortDescription}
-                        </p>
-                        <div className="role-skills-mini">
-                          {experience.skills
-                            .slice(0, 6)
-                            .map((skill, skillIndex) => (
-                              <span
-                                key={skillIndex}
-                                className="role-skill-tag-mini"
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          {experience.skills.length > 6 && (
-                            <span className="role-skill-tag-mini">
-                              +{experience.skills.length - 6}
+                return (
+                  <div
+                    key={companyGroup.company}
+                    className="company-experience-mini"
+                  >
+                    <div className="company-header-mini">
+                      <img
+                        src={companyGroup.companyLogo}
+                        alt={`${companyGroup.company} logo`}
+                        className="company-logo-mini"
+                      />
+                      <div className="company-info-mini">
+                        <h3 className="company-name-mini">
+                          {companyGroup.company}
+                        </h3>
+                        <div className="company-roles-count-mini">
+                          {companyGroup.experiences.length}{" "}
+                          {companyGroup.experiences.length === 1
+                            ? "Role"
+                            : "Roles"}
+                          {totalDurationText && (
+                            <span className="company-total-duration-mini">
+                              {" "}
+                              • {totalDurationText} total
                             </span>
                           )}
                         </div>
-
-                        {/* Individual Experience View Details Link */}
-                        <div className="role-actions-mini">
-                          <Link
-                            href={`/experience/${experience.id}`}
-                            className="role-detail-link-mini"
-                          >
-                            View Details <ArrowRight size={12} />
-                          </Link>
-                        </div>
                       </div>
-                    ))}
+                    </div>
+
+                    <div className="roles-list-mini">
+                      {companyGroup.experiences.map((experience) => {
+                        // Calculate individual role duration
+                        const roleDuration = getDurationFromString(
+                          experience.duration
+                        );
+                        const roleDurationText = roleDuration
+                          ? formatDuration(roleDuration)
+                          : "";
+
+                        return (
+                          <div key={experience.id} className="role-item-mini">
+                            <div className="role-header-mini">
+                              <h4 className="role-title-mini">
+                                {experience.title}
+                              </h4>
+                              <div className="role-duration-mini">
+                                {experience.duration}
+                                {roleDurationText && (
+                                  <div className="role-duration-calculated-mini">
+                                    ({roleDurationText})
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                            <p className="role-description-mini">
+                              {experience.shortDescription}
+                            </p>
+                            <div className="role-skills-mini">
+                              {experience.skills
+                                .slice(0, 6)
+                                .map((skill, skillIndex) => (
+                                  <span
+                                    key={skillIndex}
+                                    className="role-skill-tag-mini"
+                                  >
+                                    {skill}
+                                  </span>
+                                ))}
+                              {experience.skills.length > 6 && (
+                                <span className="role-skill-tag-mini">
+                                  +{experience.skills.length - 6}
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Individual Experience View Details Link */}
+                            <div className="role-actions-mini">
+                              <Link
+                                href={`/experience/${experience.id}`}
+                                className="role-detail-link-mini"
+                              >
+                                View Details <ArrowRight size={12} />
+                              </Link>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             <Link
               href="/experience"
@@ -324,7 +360,7 @@ function Hero() {
                 },
                 {
                   icon: Code,
-                  href: "https://leetcode.com/u/harisj58/",
+                  href: "https://leetcode.com/u/haris-javed/",
                 },
                 // TODO: add proxy email
                 // { icon: Mail, href: "mailto:johndoe@gmail.com" },

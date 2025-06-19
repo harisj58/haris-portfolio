@@ -9,6 +9,10 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { experiences } from "../../../data/experience";
+import {
+  getDurationFromString,
+  formatDuration,
+} from "../../../utils/dateUtils";
 import FloatingElements from "../../../components/FloatingElements";
 import "./page.css";
 import Link from "next/link";
@@ -19,6 +23,10 @@ const ExperienceDetail = ({ params }) => {
   if (!experience) {
     return <div>Experience not found</div>;
   }
+
+  // Calculate role duration
+  const roleDuration = getDurationFromString(experience.duration);
+  const roleDurationText = roleDuration ? formatDuration(roleDuration) : "";
 
   return (
     <div className="app-container sm:px-4 md:px-6 lg:px-8">
@@ -62,6 +70,11 @@ const ExperienceDetail = ({ params }) => {
                 <div className="meta-content">
                   <Calendar size={16} />
                   <span>{experience.duration}</span>
+                  {roleDurationText && (
+                    <div className="duration-calculated">
+                      ({roleDurationText})
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="meta-section sm:w-full md:w-auto">

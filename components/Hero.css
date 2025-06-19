@@ -467,6 +467,15 @@ p {
   font-family: 'Fira Code', monospace;
   font-size: 0.875rem;
   color: #9CA3AF;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.company-total-duration-mini {
+  color: #34D399;
+  font-weight: 500;
 }
 
 .company-actions-mini {
@@ -565,6 +574,17 @@ p {
   font-size: 0.75rem;
   color: #9CA3AF;
   white-space: nowrap;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.role-duration-calculated-mini {
+  color: #34D399;
+  font-weight: 500;
+  font-size: 0.7rem;
 }
 
 .role-description-mini {
@@ -635,24 +655,108 @@ p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .app-container {
+    padding: 0 0.5rem;
+  }
+
+  .section,
+  .about-section {
+    padding: 2rem 0.5rem;
+  }
+
+  .section-container,
+  .about-container,
+  .contact-container {
+    padding: 0 1rem;
+  }
+
+  .hero-card,
+  .about-card {
+    padding: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-text {
+    font-size: 1rem;
+  }
+
+  .about-grid,
+  .projects-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skill-card,
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .skill-title,
+  .project-title {
+    font-size: 1.25rem;
+  }
+
+  .cta-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .social-links {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .social-link {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Hidden navigation */
+  .nav-links {
+    display: none;
+  }
+
+  /* Company experience mobile adjustments */
   .company-experience-mini {
     padding: 1rem;
   }
 
   .company-header-mini {
-    flex-direction: column;
-    align-items: flex-start;
+    /* Keep flex-direction: row to maintain side-by-side layout */
+    flex-direction: row;
+    align-items: center;
     gap: 0.75rem;
   }
 
   .company-logo-mini {
     width: 40px;
     height: 40px;
-    align-self: center;
+    /* Remove align-self: center since we're keeping row layout */
   }
 
   .company-name-mini {
     font-size: 1.1rem;
+  }
+
+  .company-roles-count-mini {
+    /* Remove justify-content and text-align since info is aligned naturally */
+    font-size: 0.8rem;
   }
 
   .role-item-mini {
@@ -675,6 +779,11 @@ p {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .role-duration-mini {
+    align-items: flex-start;
+    text-align: left;
   }
 
   .role-title-mini {
@@ -701,6 +810,11 @@ p {
     padding: 0.75rem;
   }
 
+  .company-header-mini {
+    /* Keep row layout for ultra-small screens too */
+    gap: 0.5rem;
+  }
+
   .company-logo-mini {
     width: 36px;
     height: 36px;
@@ -708,6 +822,10 @@ p {
 
   .company-name-mini {
     font-size: 1rem;
+  }
+
+  .company-roles-count-mini {
+    font-size: 0.75rem;
   }
 
   .role-item-mini {
@@ -725,6 +843,14 @@ p {
 
   .role-title-mini {
     font-size: 0.95rem;
+  }
+
+  .role-duration-mini {
+    font-size: 0.7rem;
+  }
+
+  .role-duration-calculated-mini {
+    font-size: 0.65rem;
   }
 
   .role-detail-link-mini {
