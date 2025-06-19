@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { experiencesByCompany } from '@/data/experiences';
+import { experiencesByCompany } from '@/data/experience';
 import CompanyExperienceCard from '@/components/CompanyExperienceCard';
 import FloatingElements from '@/components/FloatingElements';
 import './page.css';

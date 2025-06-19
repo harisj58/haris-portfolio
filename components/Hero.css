@@ -467,6 +467,15 @@ p {
   font-family: 'Fira Code', monospace;
   font-size: 0.875rem;
   color: #9CA3AF;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.company-total-duration-mini {
+  color: #34D399;
+  font-weight: 500;
 }
 
 .company-actions-mini {
@@ -565,6 +574,17 @@ p {
   font-size: 0.75rem;
   color: #9CA3AF;
   white-space: nowrap;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.role-duration-calculated-mini {
+  color: #34D399;
+  font-weight: 500;
+  font-size: 0.7rem;
 }
 
 .role-description-mini {
@@ -655,6 +675,11 @@ p {
     font-size: 1.1rem;
   }
 
+  .company-roles-count-mini {
+    justify-content: center;
+    text-align: center;
+  }
+
   .role-item-mini {
     padding-left: 2.5rem;
     margin-bottom: 1rem;
@@ -675,6 +700,11 @@ p {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .role-duration-mini {
+    align-items: flex-start;
+    text-align: left;
   }
 
   .role-title-mini {
@@ -710,6 +740,10 @@ p {
     font-size: 1rem;
   }
 
+  .company-roles-count-mini {
+    font-size: 0.8rem;
+  }
+
   .role-item-mini {
     padding-left: 2rem;
   }
@@ -725,6 +759,14 @@ p {
 
   .role-title-mini {
     font-size: 0.95rem;
+  }
+
+  .role-duration-mini {
+    font-size: 0.7rem;
+  }
+
+  .role-duration-calculated-mini {
+    font-size: 0.65rem;
   }
 
   .role-detail-link-mini {

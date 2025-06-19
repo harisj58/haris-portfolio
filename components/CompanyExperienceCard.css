@@ -78,6 +78,15 @@
   font-family: 'Fira Code', monospace;
   color: #9CA3AF;
   font-size: 0.875rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.company-total-duration {
+  color: #34D399;
+  font-weight: 500;
 }
 
 .company-link-header {
@@ -157,6 +166,13 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.role-duration-calculated {
+  color: #34D399;
+  font-weight: 500;
+  margin-left: 0.25rem;
 }
 
 .role-description {
@@ -236,6 +252,11 @@
     font-size: 1.5rem;
   }
 
+  .company-roles-count {
+    justify-content: center;
+    text-align: center;
+  }
+
   .role-item {
     padding-left: 3rem;
   }
@@ -255,6 +276,10 @@
   .role-meta {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  .role-meta-item {
+    justify-content: flex-start;
   }
 
   .role-actions {
@@ -288,5 +313,13 @@
   .role-skill-tag {
     font-size: 0.65rem;
     padding: 0.15rem 0.5rem;
+  }
+
+  .company-roles-count {
+    font-size: 0.8rem;
+  }
+
+  .role-meta {
+    font-size: 0.7rem;
   }
 }
