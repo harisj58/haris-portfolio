@@ -21,8 +21,8 @@ const AllExperiences = () => {
           <div className="experiences-header">
             <h1 className="experiences-title">Work Experience</h1>
             <p className="experiences-subtitle">
-              My professional journey organized by company, showcasing career
-              progression and diverse experiences
+              My professional journey showcasing career progression and diverse
+              experiences
             </p>
           </div>
 
