@@ -207,14 +207,7 @@ function Hero() {
                     ))}
                   </div>
 
-                  <div className="company-actions-mini">
-                    <Link
-                      href="/experience"
-                      className="company-details-link-mini"
-                    >
-                      View All Experience <ArrowRight size={12} />
-                    </Link>
-                  </div>
+                  
                 </div>
               ))}
             </div>
