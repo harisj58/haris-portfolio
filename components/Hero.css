@@ -382,3 +382,306 @@ p {
     padding: 0.2rem 0.5rem;
   }
 }
+
+/* Company Experience Mini Styles for Hero Section */
+.company-experiences-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.company-experience-mini {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.company-experience-mini::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(52, 211, 153, 0.05) 0%,
+      rgba(52, 211, 153, 0.01) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.company-experience-mini:hover::before {
+  opacity: 1;
+}
+
+.company-experience-mini:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.15);
+}
+
+.company-header-mini {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.company-logo-mini {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+.company-info-mini {
+  flex: 1;
+}
+
+.company-name-mini {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.25rem 0;
+  transition: color 0.3s ease;
+}
+
+.company-experience-mini:hover .company-name-mini {
+  color: #34D399;
+}
+
+.company-roles-count-mini {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.875rem;
+  color: #9CA3AF;
+}
+
+.company-actions-mini {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.company-details-link-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #34D399;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  background-color: rgba(52, 211, 153, 0.05);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.company-details-link-mini:hover {
+  background-color: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.4);
+  transform: translateX(4px);
+  gap: 0.75rem;
+  box-shadow: 0 4px 8px rgba(52, 211, 153, 0.2);
+}
+
+.company-details-link-mini:active {
+  transform: translateX(2px);
+}
+
+.roles-list-mini {
+  position: relative;
+}
+
+.roles-list-mini::before {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #34D399, rgba(52, 211, 153, 0.3));
+}
+
+.role-item-mini {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.role-item-mini:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.role-item-mini::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #34D399;
+  border-radius: 50%;
+  border: 3px solid rgba(17, 24, 39, 1);
+  z-index: 1;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.1);
+}
+
+.role-header-mini {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.role-title-mini {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  margin: 0;
+  flex: 1;
+}
+
+.role-duration-mini {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: #9CA3AF;
+  white-space: nowrap;
+}
+
+.role-description-mini {
+  font-size: 0.9rem;
+  color: #D1D5DB;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.role-skills-mini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.role-skill-tag-mini {
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background-color: rgba(52, 211, 153, 0.15);
+  color: #34D399;
+  font-size: 0.7rem;
+  font-family: 'Fira Code', monospace;
+  border: 1px solid rgba(52, 211, 153, 0.15);
+  transition: all 0.3s ease;
+}
+
+.role-skill-tag-mini:hover {
+  background-color: rgba(52, 211, 153, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .company-experience-mini {
+    padding: 1rem;
+  }
+
+  .company-header-mini {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .company-logo-mini {
+    width: 40px;
+    height: 40px;
+    align-self: center;
+  }
+
+  .company-name-mini {
+    font-size: 1.1rem;
+  }
+
+  .role-item-mini {
+    padding-left: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .roles-list-mini::before {
+    left: 0.625rem;
+  }
+
+  .role-item-mini::before {
+    left: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .role-header-mini {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .role-title-mini {
+    font-size: 1rem;
+  }
+
+  .role-skills-mini {
+    gap: 0.25rem;
+  }
+
+  .role-skill-tag-mini {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-experience-mini {
+    padding: 0.75rem;
+  }
+
+  .company-logo-mini {
+    width: 36px;
+    height: 36px;
+  }
+
+  .company-name-mini {
+    font-size: 1rem;
+  }
+
+  .role-item-mini {
+    padding-left: 2rem;
+  }
+
+  .roles-list-mini::before {
+    left: 0.5rem;
+  }
+
+  .role-item-mini::before {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .role-title-mini {
+    font-size: 0.95rem;
+  }
+}
