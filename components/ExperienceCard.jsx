@@ -37,9 +37,7 @@ const ExperienceCard = ({ experience }) => {
           </div>
         </div>
       </div>
-
       <p className="experience-description">{experience.shortDescription}</p>
-
       <div className="skills-preview">
         {experience.skills.slice(0, 6).map((skill, index) => (
           <span key={index} className="skill-tag">
