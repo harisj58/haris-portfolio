@@ -578,6 +578,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.375rem;
+  margin-bottom: 1rem;
 }
 
 .role-skill-tag-mini {
@@ -594,6 +595,42 @@ p {
 .role-skill-tag-mini:hover {
   background-color: rgba(52, 211, 153, 0.25);
   transform: translateY(-1px);
+}
+
+/* Individual Role Actions */
+.role-actions-mini {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.role-detail-link-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: #34D399;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(52, 211, 153, 0.15);
+  background-color: rgba(52, 211, 153, 0.03);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.role-detail-link-mini:hover {
+  background-color: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+  transform: translateX(3px);
+  gap: 0.5rem;
+  box-shadow: 0 3px 6px rgba(52, 211, 153, 0.15);
+}
+
+.role-detail-link-mini:active {
+  transform: translateX(1px);
 }
 
 /* Responsive Design */
@@ -652,6 +689,11 @@ p {
     font-size: 0.65rem;
     padding: 0.15rem 0.5rem;
   }
+
+  .role-detail-link-mini {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -683,5 +725,10 @@ p {
 
   .role-title-mini {
     font-size: 0.95rem;
+  }
+
+  .role-detail-link-mini {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
   }
 }

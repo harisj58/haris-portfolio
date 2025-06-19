@@ -15,7 +15,6 @@ import FloatingElements from "./FloatingElements";
 import "./Hero.css";
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
-import ExperienceTimeline from "./ExperienceTimeline";
 import { projects } from "../data/projects";
 import { experiences, experiencesByCompany } from "../data/experience";
 
@@ -194,18 +193,26 @@ function Hero() {
                             </span>
                           )}
                         </div>
+                        
+                        {/* Individual Experience View Details Link */}
+                        <div className="role-actions-mini">
+                          <Link
+                            href={`/experience/${experience.id}`}
+                            className="role-detail-link-mini"
+                          >
+                            View Details <ArrowRight size={12} />
+                          </Link>
+                        </div>
                       </div>
                     ))}
                   </div>
 
                   <div className="company-actions-mini">
                     <Link
-                      href={`/experience?company=${encodeURIComponent(
-                        companyGroup.company
-                      )}`}
+                      href="/experience"
                       className="company-details-link-mini"
                     >
-                      View Details <ArrowRight size={12} />
+                      View All Experience <ArrowRight size={12} />
                     </Link>
                   </div>
                 </div>
