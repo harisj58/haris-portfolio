@@ -15,14 +15,34 @@ import FloatingElements from "./FloatingElements";
 import "./Hero.css";
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
-import ExperienceCard from "./ExperienceCard";
+import ExperienceTimeline from "./ExperienceTimeline";
 import { projects } from "../data/projects";
-import { experiences } from "../data/experiences";
+import { experiences, experiencesByCompany } from "../data/experience";
+
+const getFeaturedCompanyGroups = () => {
+  const featuredGroups = {};
+
+  Object.values(experiencesByCompany).forEach((companyGroup) => {
+    const featuredExperiences = companyGroup.experiences.filter(
+      (exp) => exp.featured
+    );
+    if (featuredExperiences.length > 0) {
+      featuredGroups[companyGroup.company] = {
+        ...companyGroup,
+        experiences: featuredExperiences,
+      };
+    }
+  });
+
+  return Object.values(featuredGroups);
+};
 
 function Hero() {
   const titles = ["Software Developer", "ML Engineer", "AI Enhanced Human"];
   const featuredProjects = projects.filter((project) => project.featured);
-  const featuredExperiences = experiences.filter((experience) => experience.featured);
+  const featuredExperiences = experiences.filter(
+    (experience) => experience.featured
+  );
 
   const currentYear = new Date().getFullYear();
 
@@ -118,9 +138,77 @@ function Hero() {
         <div className="about-container">
           <div className="about-card">
             <h2 className="about-title">Work Experience</h2>
-            <div className="projects-grid">
-              {featuredExperiences.map((experience) => (
-                <ExperienceCard key={experience.id} experience={experience} />
+            <div className="company-experiences-container">
+              {getFeaturedCompanyGroups().map((companyGroup, index) => (
+                <div
+                  key={companyGroup.company}
+                  className="company-experience-mini"
+                >
+                  <div className="company-header-mini">
+                    <img
+                      src={companyGroup.companyLogo}
+                      alt={`${companyGroup.company} logo`}
+                      className="company-logo-mini"
+                    />
+                    <div className="company-info-mini">
+                      <h3 className="company-name-mini">
+                        {companyGroup.company}
+                      </h3>
+                      <div className="company-roles-count-mini">
+                        {companyGroup.experiences.length}{" "}
+                        {companyGroup.experiences.length === 1
+                          ? "Role"
+                          : "Roles"}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="roles-list-mini">
+                    {companyGroup.experiences.map((experience) => (
+                      <div key={experience.id} className="role-item-mini">
+                        <div className="role-header-mini">
+                          <h4 className="role-title-mini">
+                            {experience.title}
+                          </h4>
+                          <span className="role-duration-mini">
+                            {experience.duration}
+                          </span>
+                        </div>
+                        <p className="role-description-mini">
+                          {experience.shortDescription}
+                        </p>
+                        <div className="role-skills-mini">
+                          {experience.skills
+                            .slice(0, 6)
+                            .map((skill, skillIndex) => (
+                              <span
+                                key={skillIndex}
+                                className="role-skill-tag-mini"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          {experience.skills.length > 6 && (
+                            <span className="role-skill-tag-mini">
+                              +{experience.skills.length - 6}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="company-actions-mini">
+                    <Link
+                      href={`/experience?company=${encodeURIComponent(
+                        companyGroup.company
+                      )}`}
+                      className="company-details-link-mini"
+                    >
+                      View Details <ArrowRight size={12} />
+                    </Link>
+                  </div>
+                </div>
               ))}
             </div>
             <Link
