@@ -26,7 +26,7 @@ export const experiences = [
             'Next.js', 'CI/CD', 'Microservices', 'SEO Optimization', 'Technical Writing'
         ],
         featured: true,
-        companyLogo: 'https://media.licdn.com/dms/image/v2/D560BAQF6x8lIz0cpvg/company-logo_100_100/company-logo_100_100/0/1721138721375/plutomoney_logo?e=1755734400&v=beta&t=CaeCWWQ7bJ8Xd8OmL7XihGOQcOSLax2UV0uMXnmvwag',
+        companyLogo: '/company_logos/plutomoney_logo.jpeg',
         companyUrl: 'https://plutomoney.in'
     },
     {
@@ -56,7 +56,7 @@ export const experiences = [
             'Agentic RAG', 'WebSockets', 'SEO'
         ],
         featured: true,
-        companyLogo: 'https://media.licdn.com/dms/image/v2/D560BAQF6x8lIz0cpvg/company-logo_100_100/company-logo_100_100/0/1721138721375/plutomoney_logo?e=1755734400&v=beta&t=CaeCWWQ7bJ8Xd8OmL7XihGOQcOSLax2UV0uMXnmvwag',
+        companyLogo: '/company_logos/plutomoney_logo.jpeg',
         companyUrl: 'https://plutomoney.in'
     },
 ];
